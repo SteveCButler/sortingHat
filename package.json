@@ -1,0 +1,22 @@
+{
+  "name": "sortinghat-remade",
+  "version": "1.0.0",
+  "description": "class project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SteveCButler/sortingHat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SteveCButler/sortingHat/issues"
+  },
+  "homepage": "https://github.com/SteveCButler/sortingHat#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.3"
+  }
+}
