@@ -330,6 +330,7 @@ const eventListenerIntialize = () => {
       let expelled = students.splice(expelStudent, 1);
       army.push(expelled[0]);
     }
+    army.sort((a, b) => (a.name > b.name ? 1 : -1));
     createArmy(army);
     createCard(students);
   });
