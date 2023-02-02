@@ -82,10 +82,12 @@ header {
   background-color: #5d5d5d;
 }
 /*** Toggle FORM  ***/
-.hideForm {
+.hideForm,
+.hideExpelled {
   display: none;
 }
-.showForm {
+.showForm,
+.showExpelled {
   display: block;
 }
 #sortButton {
