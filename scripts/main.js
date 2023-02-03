@@ -178,6 +178,7 @@ const headerContent = () => {
           <button type="submit" class="btn btn-primary mb-3">Sort</button>
         </div>
       </div>
+      <div id="formValidation" style="color: red"></div>
     </form>
   </div>
   <div id="filterSection">
@@ -245,27 +246,33 @@ const createCard = (array) => {
 // ### New Student - SORT
 const sortStudent = (event) => {
   event.preventDefault();
+  const empty = document.querySelector("#formValidation");
   const studentName = document.querySelector("#inputStudent");
-  const randomSelect = Math.floor(Math.random() * 40);
-  let randomHouse = "";
+  if (studentName.value === "") {
+    empty.innerHTML = "<p>Please enter a name in the field</p>";
+  } else {
+    empty.innerHTML = "";
+    const randomSelect = Math.floor(Math.random() * 40);
+    let randomHouse = "";
 
-  if (randomSelect <= 10) {
-    randomHouse = "Gryffindor";
-  } else if (randomSelect > 10 && randomSelect <= 20) {
-    randomHouse = "Hufflepuff";
-  } else if (randomSelect > 20 && randomSelect <= 30) {
-    randomHouse = "Ravenclaw";
-  } else if (randomSelect > 30 && randomSelect <= 40) {
-    randomHouse = "Slytherin";
+    if (randomSelect <= 10) {
+      randomHouse = "Gryffindor";
+    } else if (randomSelect > 10 && randomSelect <= 20) {
+      randomHouse = "Hufflepuff";
+    } else if (randomSelect > 20 && randomSelect <= 30) {
+      randomHouse = "Ravenclaw";
+    } else if (randomSelect > 30 && randomSelect <= 40) {
+      randomHouse = "Slytherin";
+    }
+
+    const newStudent = {
+      id: students.length + 1,
+      name: studentName.value,
+      house: randomHouse,
+    };
+    students.push(newStudent);
+    createCard(students);
   }
-
-  const newStudent = {
-    id: students.length + 1,
-    name: studentName.value,
-    house: randomHouse,
-  };
-  students.push(newStudent);
-  createCard(students);
   document.querySelector("form").reset();
 };
 
