@@ -10,6 +10,7 @@ No wireframes were used.
 The following was used as a prototype and was provided: https://user-images.githubusercontent.com/29741570/164943525-d20275be-c312-42d1-9730-0c1fd3fd9834.png
 
 ## Link to the deployed project
+https://scb-sortinghat.netlify.app/
 
 ## Description of the user
 
