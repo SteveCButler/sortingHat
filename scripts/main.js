@@ -1,3 +1,4 @@
+// ### DATA
 const students = [
   {
     id: 1,
@@ -89,6 +90,7 @@ const renderToDom = (divId, htmlString) => {
   displayContainer.innerHTML = htmlString;
 };
 
+// ### headerContent function used to build the header of the html page when rendered on DOM
 const headerContent = () => {
   const htmlString = `<h1>Welcome to Hoggy Hoggy Warts, RELOADED!</h1>
   <p>
@@ -166,12 +168,12 @@ const createArmy = (array) => {
   renderToDom("#mortysArmyContainer", htmlString);
 };
 
-// ### CREATE STUDENT CARDS
+// ### CREATE STUDENT CARDS - sorts student by house before creating the student cards
+// ### and call rendorToDom to display
 const createCard = (array) => {
   array.sort((a, b) => (a.house > b.house ? 1 : -1));
   let htmlString = "";
 
-  //for (const student of array) {
   array.forEach((student) => {
     htmlString += ` <div style="height: 200px; min-width: 200px;" class="card w-25 d-flex flex-row text-center ">
       <div class="color--${student.house}1"></div>
@@ -189,7 +191,9 @@ const createCard = (array) => {
   renderToDom("#firstYearsContainer", htmlString);
 };
 
-// ### New Student - SORT
+/* ### New Student - takes in the value from the student for, randomly assigns a house value, builds student object
+   displays all students
+*/
 const sortStudent = (event) => {
   event.preventDefault();
   const empty = document.querySelector("#formValidation");
@@ -200,16 +204,6 @@ const sortStudent = (event) => {
     empty.innerHTML = "";
     const randomSelect = Math.floor(Math.random() * houses.length);
     let randomHouse = houses[randomSelect];
-
-    // if (randomSelect <= 10) {
-    //   randomHouse = houses[0];
-    // } else if (randomSelect > 10 && randomSelect <= 20) {
-    //   randomHouse = houses[1];
-    // } else if (randomSelect > 20 && randomSelect <= 30) {
-    //   randomHouse = houses[2];
-    // } else if (randomSelect > 30 && randomSelect <= 40) {
-    //   randomHouse = houses[3];
-    // }
 
     const newStudent = {
       id: students.length + 1,
@@ -234,40 +228,47 @@ const eventListenerIntialize = () => {
     toggleShow.classList.toggle("showForm");
   });
 
-  // ### FILTER BUTTONS
+  // ### FILTER BUTTONS ###
   const all = document.querySelector("#allStudents");
   const gryffindorStudents = document.querySelector("#gryffindorStudents");
   const hufflepuffStudents = document.querySelector("#hufflepuffStudents");
   const ravenclawStudents = document.querySelector("#ravenclawStudents");
   const slytherinStudents = document.querySelector("#slytherinStudents");
 
+  // Click All button
   all.addEventListener("click", () => {
     createCard(students);
   });
 
+  // Click Gryffindor button
   gryffindorStudents.addEventListener("click", () => {
     const griff = students.filter((student) => student.house === houses[0]);
     createCard(griff);
   });
 
+  // Click Hufflepuff button
   hufflepuffStudents.addEventListener("click", () => {
     const huff = students.filter((student) => student.house === houses[1]);
     createCard(huff);
   });
 
+  // Click Ravenclaw button
   ravenclawStudents.addEventListener("click", () => {
     const raven = students.filter((student) => student.house === houses[2]);
     createCard(raven);
   });
 
+  // Click Slytherin button
   slytherinStudents.addEventListener("click", () => {
     const slytherin = students.filter((student) => student.house === houses[3]);
     createCard(slytherin);
   });
 
-  //#### EXPEL STUDENT
+  //#### EXPEL STUDENT  ###
   const expelled = document.querySelector("#firstYearsContainer");
   const army = [];
+
+  // Click Expel button
   expelled.addEventListener("click", (event) => {
     const toggleArmy = document.querySelector(".hideExpelled");
     toggleArmy.classList.add("showExpelled");
