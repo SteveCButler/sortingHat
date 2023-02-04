@@ -81,6 +81,7 @@ const students = [
     house: "Slytherin",
   },
 ];
+const houses = ["Gryffindor", "Hufflepuff", "Ravenclaw", "Slytherin"];
 
 // ### Utility Function
 const renderToDom = (divId, htmlString) => {
@@ -197,18 +198,18 @@ const sortStudent = (event) => {
     empty.innerHTML = "<p>Please enter a name in the field</p>";
   } else {
     empty.innerHTML = "";
-    const randomSelect = Math.floor(Math.random() * 40);
-    let randomHouse = "";
+    const randomSelect = Math.floor(Math.random() * houses.length);
+    let randomHouse = houses[randomSelect];
 
-    if (randomSelect <= 10) {
-      randomHouse = "Gryffindor";
-    } else if (randomSelect > 10 && randomSelect <= 20) {
-      randomHouse = "Hufflepuff";
-    } else if (randomSelect > 20 && randomSelect <= 30) {
-      randomHouse = "Ravenclaw";
-    } else if (randomSelect > 30 && randomSelect <= 40) {
-      randomHouse = "Slytherin";
-    }
+    // if (randomSelect <= 10) {
+    //   randomHouse = houses[0];
+    // } else if (randomSelect > 10 && randomSelect <= 20) {
+    //   randomHouse = houses[1];
+    // } else if (randomSelect > 20 && randomSelect <= 30) {
+    //   randomHouse = houses[2];
+    // } else if (randomSelect > 30 && randomSelect <= 40) {
+    //   randomHouse = houses[3];
+    // }
 
     const newStudent = {
       id: students.length + 1,
@@ -245,24 +246,22 @@ const eventListenerIntialize = () => {
   });
 
   gryffindorStudents.addEventListener("click", () => {
-    const griff = students.filter((student) => student.house === "Gryffindor");
+    const griff = students.filter((student) => student.house === houses[0]);
     createCard(griff);
   });
 
   hufflepuffStudents.addEventListener("click", () => {
-    const huff = students.filter((student) => student.house === "Hufflepuff");
+    const huff = students.filter((student) => student.house === houses[1]);
     createCard(huff);
   });
 
   ravenclawStudents.addEventListener("click", () => {
-    const raven = students.filter((student) => student.house === "Ravenclaw");
+    const raven = students.filter((student) => student.house === houses[2]);
     createCard(raven);
   });
 
   slytherinStudents.addEventListener("click", () => {
-    const slytherin = students.filter(
-      (student) => student.house === "Slytherin"
-    );
+    const slytherin = students.filter((student) => student.house === houses[3]);
     createCard(slytherin);
   });
 
